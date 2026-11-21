@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f0e8">
+<meta name="description" content="Thoughtfully handcrafted crochet pieces, made to be cherished.">
+<link rel="manifest" href="manifest.json">
+<title>crochet. — Handmade with love</title>
+<style>
+:root{--paper:#f5f0e8;--ink:#29251f;--muted:#81776b;--line:#ded6ca;--gold:#a68b62;--white:#fffdf9}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+button,input,select{font:inherit}button{cursor:pointer}
+header{height:76px;padding:0 7vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:#f5f0e8ed;backdrop-filter:blur(12px);z-index:5}
+.logo{font-size:29px;letter-spacing:-1.5px;text-decoration:none;color:var(--ink)}nav{display:flex;gap:28px;align-items:center}nav a{font:12px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--ink)}
+.iconbtn{border:0;background:none;color:var(--ink);font:12px Arial,sans-serif;letter-spacing:1px}
+.hero{padding:55px 7vw 65px;display:grid;grid-template-columns:1fr 1.1fr;gap:5vw;align-items:center;min-height:490px}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(48px,6vw,82px);font-weight:400;line-height:.98;letter-spacing:-3px;margin:22px 0}
+.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:390px}
+.primary{display:inline-block;background:var(--ink);color:white;border:1px solid var(--ink);padding:15px 23px;font:11px Arial,sans-serif;letter-spacing:1.8px;text-transform:uppercase;margin-top:16px}
+.hero-art{height:390px;background:#e7ded1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-art img{width:100%;height:100%;object-fit:cover}
+.section{padding:45px 7vw 75px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:27px}
+h2{font-size:37px;font-weight:400;letter-spacing:-1px;margin:8px 0}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}
+.filter{border:1px solid var(--line);background:transparent;padding:9px 14px;border-radius:30px;font:11px Arial,sans-serif;letter-spacing:.8px;color:var(--muted)}
+.filter.active{background:var(--ink);border-color:var(--ink);color:white}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.product{min-width:0}.photo{aspect-ratio:4/4.6;background:#e9e1d6;position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.product:hover .photo img{transform:scale(1.035)}
+.product-info{display:flex;justify-content:space-between;gap:10px;padding-top:13px}
+.product h3{font-size:19px;font-weight:400;margin:0 0 6px}.category{font:10px Arial,sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted)}
+.price{font:13px Arial,sans-serif;white-space:nowrap}.add{margin-top:12px;border:0;border-bottom:1px solid var(--gold);background:none;padding:0 0 4px;font:10px Arial,sans-serif;letter-spacing:1.3px;text-transform:uppercase;color:var(--ink)}
+.about{background:#e9e1d6;padding:65px 12vw;text-align:center}.about p{max-width:620px;margin:15px auto;color:#71685e;font-size:17px;line-height:1.8}
+footer{padding:30px 7vw;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:11px Arial,sans-serif;letter-spacing:1px}
+.overlay{display:none;position:fixed;inset:0;background:#0007;z-index:10;align-items:center;justify-content:center;padding:18px}.overlay.show{display:flex}.panel{background:var(--white);width:min(480px,100%);max-height:90vh;overflow:auto;padding:27px}
+.panel-top{display:flex;justify-content:space-between;align-items:center}.panel h2{font-size:28px}.close{border:0;background:none;font-size:24px}
+.cart-row{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:13px 0;font:14px Arial,sans-serif}
+.formrow{display:grid;gap:6px;margin:14px 0}.formrow label{font:11px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.formrow input,.formrow select{padding:12px;border:1px solid var(--line);background:white;color:var(--ink);width:100%}
+.admin-note{font:12px Arial,sans-serif;color:var(--muted);line-height:1.6}
+.empty{color:var(--muted);padding:25px 0;font-size:15px}
+@media(max-width:720px){header{padding:0 5vw;height:66px}nav{gap:13px}nav a{font-size:10px;letter-spacing:.8px}.hero{padding:38px 5vw 45px;grid-template-columns:1fr;gap:25px}.hero-art{height:300px}.section{padding:38px 5vw 55px}.grid{grid-template-columns:repeat(2,1fr);gap:20px 13px}.section-head h2{font-size:30px}.about{padding:48px 8vw}footer{padding:25px 5vw;flex-direction:column}}
+@media(max-width:390px){nav a:first-child{display:none}.grid{gap:18px 10px}.product h3{font-size:16px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#">crochet.</a>
+  <nav><a href="#collection">Collection</a><a href="#story">Our story</a><button class="iconbtn" onclick="openCart()">BAG (<span id="cartCount">0</span>)</button></nav>
+</header>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">HANDMADE · HEARTFELT · TIMELESS</div><h1>Made by hand.<br>Made with love.</h1><p>Thoughtfully handcrafted crochet pieces, made slowly and designed to be cherished.</p><a class="primary" href="#collection">Explore collection</a></div>
+ <div class="hero-art"><img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&w=1200&q=85" alt="Warm neutral handmade-inspired still life"></div>
+</section>
+<section class="section" id="collection">
+ <div class="section-head"><div><div class="eyebrow">A LITTLE SOMETHING SPECIAL</div><h2>Our collection</h2></div><button class="iconbtn" onclick="openAdmin()">＋ MANAGE</button></div>
+ <div class="filters" id="filters"></div><div class="grid" id="products"></div>
+</section>
+<section class="about" id="story"><div class="eyebrow">THE ART OF SLOW MAKING</div><h2>Made with intention.</h2><p>Every stitch tells a story. Our pieces are made by hand, with care and attention to the little details that make something truly yours.</p></section>
+</main>
+<footer><span>© <span id="year"></span> CROCHET. ALL RIGHTS RESERVED.</span><span>HANDMADE WITH LOVE</span></footer>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closePanel('cartOverlay')"><div class="panel"><div class="panel-top"><h2>Your bag</h2><button class="close" onclick="closePanel('cartOverlay')">×</button></div><div id="cartItems"></div><p id="cartTotal"></p><button class="primary" onclick="checkout()">ENQUIRE ON WHATSAPP</button><p class="admin-note">This is an enquiry bag. Final availability and delivery can be confirmed with the maker.</p></div></div>
+<div class="overlay" id="adminOverlay" onclick="if(event.target===this)closePanel('adminOverlay')"><div class="panel"><div class="panel-top"><h2>Manage collection</h2><button class="close" onclick="closePanel('adminOverlay')">×</button></div><p class="admin-note">Add your own products here. Changes are saved in this browser on this device.</p><form id="productForm">
+ <div class="formrow"><label>Product name</label><input id="pName" required placeholder="e.g. Daisy bouquet"></div>
+ <div class="formrow"><label>Category</label><select id="pCategory"><option>Flowers</option><option>Plushies</option><option>Bags</option><option>Accessories</option><option>Other</option></select></div>
+ <div class="formrow"><label>Price (₹)</label><input id="pPrice" type="number" min="0" required placeholder="e.g. 850"></div>
+ <div class="formrow"><label>Photo URL</label><input id="pImage" type="url" placeholder="https://..."></div>
+ <button class="primary" type="submit">ADD PRODUCT</button>
+ </form><p class="admin-note">For a public shop, use a secure admin login and a shared database before accepting orders. This starter version is a local prototype.</p></div></div>
+<script>
+const starter=[
+ {id:1,name:"The Daisy Bouquet",category:"Flowers",price:850,image:"https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=85"},
+ {id:2,name:"Little Keepsake Bear",category:"Plushies",price:650,image:"https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=900&q=85"},
+ {id:3,name:"Everyday Crochet Tote",category:"Bags",price:1100,image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85"}
+];
+let products=JSON.parse(localStorage.getItem("crochetProducts")||"null")||starter;
+let cart=[];
+let category="All";
+const money=n=>"₹"+Number(n).toLocaleString("en-IN");
+function save(){localStorage.setItem("crochetProducts",JSON.stringify(products))}
+function render(){
+ const cats=["All",...new Set(products.map(p=>p.category))];
+ document.getElementById("filters").innerHTML=cats.map(c=>`<button class="filter ${c===category?'active':''}" onclick="setCategory('${c.replace(/'/g,"\\'")}')">${c}</button>`).join("");
+ const shown=category==="All"?products:products.filter(p=>p.category===category);
+ document.getElementById("products").innerHTML=shown.length?shown.map(p=>`<article class="product"><div class="photo"><img src="${escapeHtml(p.image||'')}" alt="${escapeHtml(p.name)}" onerror="this.style.display='none'"></div><div class="product-info"><div><h3>${escapeHtml(p.name)}</h3><div class="category">${escapeHtml(p.category)}</div></div><div class="price">${money(p.price)}</div></div><button class="add" onclick="addToBag(${p.id})">＋ Add to bag</button></article>`).join(""):'<p class="empty">No products in this category yet.</p>';
+ document.getElementById("cartCount").textContent=cart.reduce((a,b)=>a+b.qty,0);
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function setCategory(c){category=c;render()}
+function addToBag(id){let item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({id,qty:1});render()}
+function openCart(){document.getElementById("cartOverlay").classList.add("show");let box=document.getElementById("cartItems");box.innerHTML=cart.length?cart.map(i=>{let p=products.find(x=>x.id===i.id);return p?`<div class="cart-row"><span>${escapeHtml(p.name)} × ${i.qty}</span><span>${money(p.price*i.qty)}</span></div>`:""}).join(""):'<p class="empty">Your bag is waiting for something lovely.</p>';document.getElementById("cartTotal").textContent=cart.length?"Estimated total: "+money(cart.reduce((s,i)=>{let p=products.find(x=>x.id===i.id);return s+(p?p.price*i.qty:0)},0)):""}
+function checkout(){if(!cart.length){alert("Add a product to your bag first.");return}let lines=cart.map(i=>{let p=products.find(x=>x.id===i.id);return p?`${p.name} x ${i.qty} — ${money(p.price*i.qty)}`:""}).filter(Boolean);let total=cart.reduce((s,i)=>{let p=products.find(x=>x.id===i.id);return s+(p?p.price*i.qty:0)},0);let message="Hello! I'd like to enquire about:\n"+lines.join("\n")+"\nEstimated total: "+money(total);let phone=prompt("Enter your WhatsApp number with country code (digits only), e.g. 91XXXXXXXXXX:");if(phone&&/^\d{8,15}$/.test(phone))window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(message),"_blank");else if(phone)alert("Please enter a valid number with country code.");}
+function openAdmin(){document.getElementById("adminOverlay").classList.add("show")}
+function closePanel(id){document.getElementById(id).classList.remove("show")}
+document.getElementById("productForm").addEventListener("submit",e=>{e.preventDefault();products.push({id:Date.now(),name:document.getElementById("pName").value.trim(),category:document.getElementById("pCategory").value,price:Number(document.getElementById("pPrice").value),image:document.getElementById("pImage").value.trim()});save();category="All";render();e.target.reset();alert("Product added to this browser's collection.")});
+document.getElementById("year").textContent=new Date().getFullYear();render();
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{});
+</script>
+</body></html>

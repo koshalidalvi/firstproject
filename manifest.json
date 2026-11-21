@@ -1,0 +1,10 @@
+{
+  "name": "Crochet Studio",
+  "short_name": "Crochet",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#f5f0e8",
+  "description": "A little boutique for handmade crochet pieces.",
+  "icons": []
+}
